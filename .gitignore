@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Generated data files
+data/
+
+# Temp files for code generation
+.temp/
+
+# Build output
+dist/
+
+# Bun lockfile (optional - some prefer to commit it)
+# bun.lockb
+
+# OS files
+.DS_Store

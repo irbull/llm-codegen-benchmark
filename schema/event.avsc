@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "name": "Event",
+  "namespace": "com.example.events",
+  "doc": "An event record with user ID and duration",
+  "fields": [
+    {
+      "name": "userId",
+      "type": "string",
+      "doc": "Unique identifier for the user"
+    },
+    {
+      "name": "duration",
+      "type": "int",
+      "doc": "Duration of the event in milliseconds"
+    }
+  ]
+}

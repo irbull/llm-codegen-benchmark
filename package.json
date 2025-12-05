@@ -1,0 +1,21 @@
+{
+  "name": "avro-data-processing",
+  "version": "1.0.0",
+  "description": "Blog example: Processing large Avro datasets with TypeScript",
+  "type": "module",
+  "scripts": {
+    "generate": "bun scripts/generate-data.ts",
+    "process": "bun src/process-events.ts",
+    "llm-test": "bun scripts/llm-context-test.ts",
+    "llm-codegen": "bun scripts/llm-codegen-test.ts"
+  },
+  "dependencies": {
+    "avsc": "^5.7.7",
+    "openai": "^4.73.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0"
+  }
+}

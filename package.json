@@ -7,7 +7,8 @@
     "generate": "bun scripts/generate-data.ts",
     "process": "bun src/process-events.ts",
     "llm-test": "bun scripts/llm-context-test.ts",
-    "llm-codegen": "bun scripts/llm-codegen-test.ts"
+    "llm-codegen": "bun scripts/llm-codegen-test.ts",
+    "llm-sort": "bun scripts/llm-sort.ts"
   },
   "dependencies": {
     "avsc": "^5.7.7",

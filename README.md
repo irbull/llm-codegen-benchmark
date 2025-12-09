@@ -1,6 +1,6 @@
 # LLM Code Generation vs Context Loading Benchmark
 
-A companion project for the blog post: **"Why LLMs Should Generate Code, Not Process Data"**
+A companion project for the blog post: **"Why Embedding a JavaScript Runtime Inside an LLM Is a Big Deal"**
 
 This project demonstrates why having an LLM generate code and execute it via a runtime (like Bun) is superior to loading raw data into the model's context window.
 
@@ -129,6 +129,32 @@ Sends raw event data to GPT-5.1 and asks it to compute the filter/group/average.
 
 ---
 
+### `bun run llm-sort`
+
+**Tests LLM's ability to sort arrays of varying sizes.**
+
+Generates random arrays of integers (1-10,000) and asks GPT-5.1 to sort them. Runs 3 trials per size to show consistency.
+
+```
+🔢 LLM Sorting Test (GPT-5.1)
+
+| Size    | Run 1 | Run 2 | Run 3 | Avg Acc |
+|---------|-------|-------|-------|---------|
+| 10      | 100%  | 100%  | 100%  | 100%    |
+| 50      | 100%  |  98%  | 100%  |  99%    |
+| 100     |  85%  |  82%  |  80%  |  82%    |
+| 500     |  15%  |  12%  |  18%  |  15%    |
+| 1K      |   0%  |   0%  |   0%  |   0%    |
+| 5K      |   ❌  |   ❌  |   ❌  |   0%    |
+| 10K     |   ❌  |   ❌  |   ❌  |   0%    |
+```
+
+**Accuracy metric:** Percentage of elements in correct position vs. properly sorted array.
+
+**Key Insight:** Even a simple sorting task degrades rapidly as array size increases.
+
+---
+
 ## Project Structure
 
 ```
@@ -140,7 +166,8 @@ Sends raw event data to GPT-5.1 and asks it to compute the filter/group/average.
 ├── scripts/
 │   ├── generate-data.ts        # Data generator
 │   ├── llm-context-test.ts     # LLM data-in-context test
-│   └── llm-codegen-test.ts     # LLM code-generation test
+│   ├── llm-codegen-test.ts     # LLM code-generation test
+│   └── llm-sort.ts             # LLM sorting accuracy test
 ├── src/
 │   └── process-events.ts       # Local processing benchmark
 ├── data/                       # Generated .avro files (gitignored)
@@ -153,7 +180,7 @@ Sends raw event data to GPT-5.1 and asks it to compute the filter/group/average.
 
 | Variable | Required For | Description |
 |----------|--------------|-------------|
-| `OPENAI_API_KEY` | `llm-test`, `llm-codegen` | Your OpenAI API key |
+| `OPENAI_API_KEY` | `llm-test`, `llm-codegen`, `llm-sort` | Your OpenAI API key |
 
 ---
 
